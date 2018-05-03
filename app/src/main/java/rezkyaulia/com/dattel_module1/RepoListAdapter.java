@@ -85,6 +85,12 @@ public class RepoListAdapter extends RecyclerView.Adapter<RepoListAdapter.RepoVi
         RepoViewHolder(View itemView, RepoSelectedListener repoSelectedListener){
             super(itemView);
             ButterKnife.bind(this,itemView);
+
+            itemView.setOnClickListener(v ->{
+                if (repo != null){
+                    repoSelectedListener.onRepoSelected(repo);
+                }
+            });
         }
 
         void bind(Repo repo){

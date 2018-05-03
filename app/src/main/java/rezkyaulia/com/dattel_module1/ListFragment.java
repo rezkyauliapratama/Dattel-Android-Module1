@@ -1,5 +1,7 @@
 package rezkyaulia.com.dattel_module1;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import rezkyaulia.com.dattel_module1.model.Repo;
 import android.support.annotation.NonNull;
@@ -31,6 +33,8 @@ public class ListFragment extends Fragment implements RepoSelectedListener {
     TextView errorTextView;
     @BindView(R.id.loading_view) View loadingView;
 
+    OnFragmentInteractionListener mListener;
+
 
     @Nullable
     @Override
@@ -50,7 +54,7 @@ public class ListFragment extends Fragment implements RepoSelectedListener {
 
     @Override
     public void onRepoSelected(Repo repo) {
-
+        mListener.onDetailsInteraction(repo);
     }
 
     @Override
@@ -83,5 +87,28 @@ public class ListFragment extends Fragment implements RepoSelectedListener {
             unbinder.unbind();
             unbinder = null;
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onDetailsInteraction(Repo repo);
+
     }
 }
