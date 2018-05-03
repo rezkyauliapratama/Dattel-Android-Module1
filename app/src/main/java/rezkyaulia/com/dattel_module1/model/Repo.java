@@ -1,4 +1,4 @@
-package android.rezkyaulia.com.dattel_android_module1.model;
+package rezkyaulia.com.dattel_module1.model;
 
 
 import com.google.gson.annotations.SerializedName;

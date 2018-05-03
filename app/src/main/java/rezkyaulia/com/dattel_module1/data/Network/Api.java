@@ -1,4 +1,4 @@
-package android.rezkyaulia.com.dattel_android_module1.data.Network;
+package rezkyaulia.com.dattel_module1.data.Network;
 
 import android.content.Context;
 
